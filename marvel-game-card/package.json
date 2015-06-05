@@ -1,0 +1,12 @@
+{
+  "name": "marvel-game-card",
+  "version": "1.0.0",
+  "description": "curso frontend",
+  "main": "index.js",
+  "scripts": {
+    "jade": "jade -w -P lib/*.jade -o ./public"
+  },
+
+  "author": "Fabian Siatama",
+  "license": "ISC"
+}
