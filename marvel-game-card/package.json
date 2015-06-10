@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "jade": "jade -w -p lib/*.jade -o ./public",
+    "jade": "jade --watch --pretty lib/*.jade --out ./public",
     "styl": "stylus -u nib -c -w lib/app.styl -o public/css",
-    "serve": "http-server .",
+    "serve": "http-server ./public",
     "babel": "babel --watch lib --out-dir public"
   }
 }
