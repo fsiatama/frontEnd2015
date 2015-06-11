@@ -6,31 +6,33 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var $ = window.jQuery;
 
-var MarveApi = (function () {
-	function MarveApi(key) {
-		_classCallCheck(this, MarveApi);
+var MarvelApi = (function () {
+  function MarvelApi(key) {
+    _classCallCheck(this, MarvelApi);
 
-		this.key = key;
-		this.baseUrl = 'http://gateway.marvel.com/v1/public/';
-	}
+    this.key = key;
+    this.baseUrl = 'http://gateway.marvel.com/v1/public/';
+  }
 
-	_createClass(MarveApi, [{
-		key: 'findSeries',
-		value: function findSeries(title) {
-			var url = '' + this.baseUrl + 'series?title=' + title + '&apikey=' + this.key;
-			return Promise.resolve($.get(url));
-		}
-	}, {
-		key: 'getResourceURI',
-		value: function getResourceURI(resourceURI) {
-			// este metodo es muy similar al de arriba.
-			// ¿Podrías crear un método interno al que llamen estos dos?
-			var url = '' + resourceURI + '?apikey=' + this.key;
-			return Promise.resolve($.get(url));
-		}
-	}]);
+  _createClass(MarvelApi, [{
+    key: 'findSeries',
+    value: function findSeries(title) {
+      var url = '' + this.baseUrl + 'series?title=' + title + '&apikey=' + this.key;
+      return Promise.resolve($.get(url)).then(function (res) {
+        return res.data.results[0];
+      });
+    }
+  }, {
+    key: 'getResourceURI',
+    value: function getResourceURI(resourceURI) {
+      var url = '' + resourceURI + '?apikey=' + this.key;
+      return Promise.resolve($.get(url)).then(function (res) {
+        return res.data.results[0];
+      });
+    }
+  }]);
 
-	return MarveApi;
+  return MarvelApi;
 })();
 
 window.MarvelApi = MarvelApi;

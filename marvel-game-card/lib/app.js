@@ -6,26 +6,18 @@ var api = new MarvelApi(key)
 
 api.findSeries('avengers')
 .then((serie) => {
-	var characters = serie.characters.items
-	var promises   = []
-
-	for (let character in characters) {
-		debugger
-		let promise = api.getResourceURI(character.resourceURI)
-		promises.push(promise)
-	}
-
-	return Promise.all(promises)
+  var characters = serie.characters.items
+  var promises = []
+  for (let character of characters) {
+    let promise = api.getResourceURI(character.resourceURI)
+    promises.push(promise)
+  }
+  return Promise.all(promises)
 })
-.then((character=> s) {
-	console.log(characters)
+.then((characters) => {
+  debugger
+  console.log(characters)
 })
-.catch( (err) {
-	c=> onsole.error(err)
+.catch((err) => {
+  console.error(err)
 })
-
-/*
-var MarvelApi = window.MarvelApi
-
-var api = new MarvelApi(key)
-*/
