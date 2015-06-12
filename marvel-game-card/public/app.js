@@ -7,6 +7,8 @@ var key = 'f6df629be962b0046a4c86303d8fd771';
 var api = new MarvelApi(key);
 
 api.findSeries('avengers').then(function (serie) {
+  var serieImage = 'url(' + serie.thumbnail.path + '.' + serie.thumbnail.extension + ')';
+  $('.Layout').css('background-image', serieImage);
   var characters = serie.characters.items;
   var promises = [];
   var _iteratorNormalCompletion = true;
@@ -37,8 +39,21 @@ api.findSeries('avengers').then(function (serie) {
 
   return Promise.all(promises);
 }).then(function (characters) {
-  debugger;
-  console.log(characters);
+  return characters.filter(function (character) {
+    return !!character.thumbnail;
+  });
+}).then(function (characters) {
+
+  $('.Card').each(function (i, item) {
+    var character = characters[i];
+    var $this = $(item);
+    var $image = $this.find('.Card-image');
+    var $description = $this.find('.Card-description');
+    var $name = $this.find('.Card-name');
+    $image.attr('src', '' + character.thumbnail.path + '.' + character.thumbnail.extension);
+    $name.text('' + character.name);
+    $description.text('' + character.description);
+  });
 })['catch'](function (err) {
   console.error(err);
 });
