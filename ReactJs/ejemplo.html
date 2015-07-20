@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Curso de React JS</title>
+</head>
+<body>
+	<section id="container">
+		
+	</section>
+	
+	<script src="https://fb.me/react-0.13.3.js"></script>
+	<script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+	<script type="text/jsx;harmony=true">
+		class HelloWorldComponent extends React.Component {
+			render() {
+				return <h1>{this.props.name} evoluciona a nivel {this.props.level}!</h1>
+			}
+
+			HelloWorldComponent.propTypes = {
+				name: React.PropTypes.string,
+				level: React.PropTypes.number
+			};
+			
+		}
+		React.render(<HelloWorldComponent name="Pikachu" />, document.getElementById('container'));
+		setTimeout(() => {
+			React.render(<HelloWorldComponent name="prueba" level={25}/>, document.getElementById('container'));
+		}, 3000)
+
+
+	</script>
+</body>
+</html>
