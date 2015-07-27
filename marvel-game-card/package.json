@@ -1,22 +1,28 @@
 {
-	"dependencies": {
-		"page": "1.6.3",
-		"jquery": "2.1.4",
-		"browserify": "9.0.8",
-		"babelify": "6.1.2",
-		"jadeify": "4.3.0",
-		"gulp": "3.9.0",
-		"vinyl-buffer": "^1.0.0",
-		"vinyl-source-stream": "^1.0.0",
-		"gulp-stylus": "2.0.1",
-		"gulp-concat-css": "2.2.0",
-		"nib": "1.1.0",
-		"gulp-uglify": "1.2.0",
-		"gulp-minify-css": "1.1.0"
-	},
-	"scripts": {
-		"styl": "stylus -u nib -c -w lib/app.styl -o public/css",
-		"serve": "http-server ./public",
-		"build": "browserify -t babelify -t jadeify lib/app.js > public/util/app.js"
-	}
+  "dependencies": {
+    "express": "^4.13.1",
+    "jquery": "2.1.4",
+    "page": "1.6.3"
+  },
+  "devDependencies": {
+    "babelify": "6.1.2",
+    "browserify": "9.0.8",
+    "gulp": "3.9.0",
+    "gulp-concat-css": "2.2.0",
+    "gulp-livereload": "^3.8.0",
+    "gulp-minify-css": "1.1.0",
+    "gulp-stylus": "2.0.1",
+    "gulp-uglify": "1.2.0",
+    "jadeify": "4.3.0",
+    "lodash.assign": "^3.2.0",
+    "nib": "1.1.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.0.0",
+    "watchify": "^3.3.0"
+  },
+  "scripts": {
+    "styl": "stylus -u nib -c -w lib/app.styl -o public/css",
+    "serve": "http-server ./public",
+    "build": "browserify -t babelify -t jadeify lib/app.js > public/util/app.js"
+  }
 }
