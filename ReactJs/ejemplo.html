@@ -12,7 +12,26 @@
 	<script src="https://fb.me/react-0.13.3.js"></script>
 	<script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
 	<script type="text/jsx;harmony=true">
-		class HelloWorldComponent extends React.Component {
+
+	class HelloWorldComponent extends React.Component{
+		render () {
+			return <h1>{this.props.name} evoluciona en nivel {this.props.level}!</h1>
+		}
+	}
+	
+	HelloWorldComponent.propTypes = {
+		name: React.PropTypes.string,
+		level: React.PropTypes.number
+	}
+	
+	React.render(<HelloWorldComponent name="Pikachu" level={25} />, document.getElementById('container'));
+
+	/*setTimeout(() => {
+		React.render(<HelloWorldComponent name="Wartourtle" />, document.getElementById('container'));		
+	}, 3000)*/
+
+
+		/*class HelloWorldComponent extends React.Component {
 			render() {
 				return <h1>{this.props.name} evoluciona a nivel {this.props.level}!</h1>
 			}
@@ -26,7 +45,7 @@
 		React.render(<HelloWorldComponent name="Pikachu" />, document.getElementById('container'));
 		setTimeout(() => {
 			React.render(<HelloWorldComponent name="prueba" level={25}/>, document.getElementById('container'));
-		}, 3000)
+		}, 3000)*/
 
 
 	</script>
